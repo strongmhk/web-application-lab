@@ -21,8 +21,7 @@ function App(){
     item.done = false;
     setItems([...items, item]);
     console.log("items: ", items);
-    call("/todo","POST", item)
-     .then((response) => setItems(response.data));
+    call("/todo","POST", item).then((response) => setItems(response.data));
   };
 
   const deleteItem = (item) => {
@@ -31,24 +30,23 @@ function App(){
   }
 
   let todoItems = 
-     items.length > 0 && (
-     <Paper style={{ margine: 16 }} > 
-     <List>
-     {items.map((item) => ( 
-        <Todo item={item} key={item.id} 
-        deleteItem={deleteItem} />
-     ))} 
-
-     </List>
-     </Paper>
-     );
+    items.length > 0 && (
+    <Paper style={{ margine: 16 }} > 
+      <List>
+        {items.map((item) => ( 
+            <Todo item={item} key={item.id} 
+            deleteItem={deleteItem} />
+        ))} 
+      </List>
+    </Paper>
+    );
 
 	return <div className = "App"> 
     <Container maxWidth="md">
       <AddTodo addItem={addItem}/>
       {todoItems}
     </Container>
-   </div>
+  </div>
 
 }
 
